@@ -312,6 +312,8 @@ Convenience wrapper that uses data.modpara and data.para_qp_trans.
   are active
 """
 function init_qp_weight!(data::ExpertModeData)
+    # NMPTrans=0 means one periodic translation sector at runtime.
+    data.modpara.nmp_trans == 0 && (data.modpara.nmp_trans = 1)
     if data.qp_weights === nothing
         data.qp_weights = QuantumProjectionWeights()
     end
